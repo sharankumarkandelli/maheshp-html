@@ -1,0 +1,974 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PALAKURITHI Wedding Invitation</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec, #fff8f0);
+            color: #4a2630;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           HEART BACKGROUND
+        ========================= */
+
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            color: rgba(220, 50, 90, 0.18);
+            font-size: 25px;
+            animation: floatHeart linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: #c2185b !important;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #6d3043 !important;
+            font-weight: 600;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #e91e63 !important;
+        }
+
+        /* =========================
+           PAGES
+        ========================= */
+
+        .page {
+            min-height: 100vh;
+            padding: 110px 20px 60px;
+            display: none;
+            animation: pageAnimation 1s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-card {
+            max-width: 850px;
+            padding: 60px 30px;
+            background: rgba(255,255,255,0.75);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(160,40,80,0.15);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .small-title {
+            letter-spacing: 5px;
+            color: #b71c55;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(50px, 9vw, 100px);
+            color: #b71c55;
+            margin: 20px 0;
+        }
+
+        .couple {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 6vw, 60px);
+            color: #5e2738;
+        }
+
+        .heart-main {
+            color: #e91e63;
+            animation: heartbeat 1.2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        .welcome {
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-top: 25px;
+        }
+
+        .btn-wedding {
+            margin-top: 30px;
+            padding: 13px 35px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(45deg,#c2185b,#e91e63);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(194,24,91,0.3);
+            transition: .3s;
+        }
+
+        .btn-wedding:hover {
+            transform: translateY(-4px) scale(1.04);
+        }
+
+        /* =========================
+           SECTION TITLES
+        ========================= */
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 45px;
+            color: #b71c55;
+            margin-bottom: 50px;
+        }
+
+        /* =========================
+           INFO CARDS
+        ========================= */
+
+        .info-card {
+            background: rgba(255,255,255,0.85);
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 15px 40px rgba(130,30,60,0.1);
+            transition: .4s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(130,30,60,0.18);
+        }
+
+        .info-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #b71c55;
+        }
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: white;
+            margin: 25px 0;
+            padding: 25px;
+            border-left: 5px solid #e91e63;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .timeline-item h4 {
+            color: #b71c55;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* =========================
+           COUNTDOWN
+        ========================= */
+
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .count-box {
+            background: white;
+            width: 110px;
+            padding: 20px 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.1);
+        }
+
+        .count-box span {
+            display: block;
+            font-size: 30px;
+            font-weight: bold;
+            color: #c2185b;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #6d3043;
+            color: white;
+        }
+
+        /* =========================
+           MUSIC BUTTON
+        ========================= */
+
+        .music-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: #e91e63;
+            color: white;
+            font-size: 23px;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,.2);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:768px) {
+
+            .page {
+                padding-top: 90px;
+            }
+
+            .hero-card {
+                padding: 45px 20px;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+
+            .couple {
+                font-size: 38px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#" onclick="showPage('home')">
+            💕 PALAKURITHI
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+            ☰
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('home')">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('story')">Our Story</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('details')">Wedding Details</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('welcome')">Welcome</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     PAGE 1
+========================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-card">
+
+            <div class="small-title">
+                PALAKURITHI
+            </div>
+
+            <p class="welcome">
+                A BEAUTIFUL CELEBRATION AWAITS
+            </p>
+
+            <h1>
+                Wedding
+            </h1>
+
+            <div class="couple">
+
+                MAHESH
+
+                <span class="heart-main">
+                    ❤️
+                </span>
+
+                CHINNI
+
+            </div>
+
+            <p class="welcome">
+                With hearts full of love and happiness,
+                we invite you to celebrate our special day.
+            </p>
+
+            <button class="btn-wedding"
+                    onclick="showPage('story')">
+
+                OPEN INVITATION 💌
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 2
+========================= -->
+
+<section id="story" class="page">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Our Beautiful Story ❤️
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💕
+                    </div>
+
+                    <h3>Two Hearts</h3>
+
+                    <p>
+                        Two hearts found a beautiful connection
+                        and began a journey filled with love,
+                        happiness and understanding.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🌸
+                    </div>
+
+                    <h3>A New Journey</h3>
+
+                    <p>
+                        A wonderful new chapter is beginning,
+                        surrounded by family, friends and
+                        countless beautiful memories.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💍
+                    </div>
+
+                    <h3>Forever Together</h3>
+
+                    <p>
+                        With love in their hearts,
+                        MAHESH and CHINNI are ready to
+                        begin their journey together.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-5">
+
+            <button class="btn-wedding"
+                    onclick="showPage('details')">
+
+                VIEW WEDDING DETAILS →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 3
+========================= -->
+
+<section id="details" class="page">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Wedding Details 💍
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        📅
+                    </div>
+
+                    <h3>Date</h3>
+
+                    <p>
+                        <strong>
+                            27 March 2027
+                        </strong>
+                    </p>
+
+                    <p>
+                        A beautiful day to celebrate
+                        love and togetherness.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ⏰
+                    </div>
+
+                    <h3>Time</h3>
+
+                    <p>
+                        <strong>
+                            8:00
+                        </strong>
+                    </p>
+
+                    <p>
+                        Please join us and make
+                        this beautiful occasion memorable.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        📍
+                    </div>
+
+                    <h3>Place</h3>
+
+                    <p>
+                        <strong>
+                            ELURU
+                        </strong>
+                    </p>
+
+                    <p>
+                        We warmly welcome you
+                        to celebrate with us.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h3 class="text-center mt-5"
+            style="font-family:Playfair Display;color:#b71c55;">
+
+            Countdown to Our Special Day
+
+        </h3>
+
+
+        <div class="countdown-box">
+
+            <div class="count-box">
+                <span id="days">0</span>
+                Days
+            </div>
+
+            <div class="count-box">
+                <span id="hours">0</span>
+                Hours
+            </div>
+
+            <div class="count-box">
+                <span id="minutes">0</span>
+                Minutes
+            </div>
+
+            <div class="count-box">
+                <span id="seconds">0</span>
+                Seconds
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-5">
+
+            <button class="btn-wedding"
+                    onclick="showPage('welcome')">
+
+                HEART WELCOME ❤️
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 4
+========================= -->
+
+<section id="welcome" class="page">
+
+    <div class="container">
+
+        <div class="hero-card mx-auto text-center">
+
+            <div class="small-title">
+                ❤️ HEART WELCOME ❤️
+            </div>
+
+            <h2 class="section-title mb-3">
+                You Are Invited
+            </h2>
+
+            <div class="couple">
+                MAHESH
+                <span class="heart-main">❤️</span>
+                CHINNI
+            </div>
+
+            <p class="welcome mt-4">
+
+                Your presence will make our special
+                celebration even more beautiful.
+
+            </p>
+
+            <p class="mt-4">
+
+                We warmly welcome you and your family
+                to share our happiness, blessings and
+                unforgettable memories.
+
+            </p>
+
+            <div class="mt-4">
+
+                <h4 style="color:#b71c55;">
+                    📅 27 March 2027
+                </h4>
+
+                <h4 style="color:#b71c55;">
+                    ⏰ 8:00
+                </h4>
+
+                <h4 style="color:#b71c55;">
+                    📍 ELURU
+                </h4>
+
+            </div>
+
+            <div class="mt-4">
+
+                <p style="font-family:'Playfair Display';
+                          font-size:25px;">
+
+                    With Love ❤️
+
+                </p>
+
+                <strong>
+                    PALAKURITHI FAMILY
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music-btn"
+        onclick="toggleMusic()"
+        id="musicButton">
+
+    🎵
+
+</button>
+
+
+<!-- AUDIO -->
+
+<audio id="weddingMusic" loop>
+    <source src="wedding-music.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    PALAKURITHI WEDDING INVITATION ❤️
+
+    <br>
+
+    MAHESH & CHINNI
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       PAGE NAVIGATION
+    ========================= */
+
+    function showPage(pageId) {
+
+        const pages = document.querySelectorAll('.page');
+
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+
+        document.getElementById(pageId)
+            .classList.add('active');
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Close mobile menu
+        const menu = document.getElementById('menu');
+
+        if(menu.classList.contains('show')) {
+
+            const bsCollapse =
+                bootstrap.Collapse.getInstance(menu);
+
+            if(bsCollapse) {
+                bsCollapse.hide();
+            }
+        }
+
+    }
+
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+    function createHeart() {
+
+        const heart = document.createElement('div');
+
+        heart.className = 'heart';
+
+        heart.innerHTML = '❤️';
+
+        heart.style.left =
+            Math.random() * 100 + 'vw';
+
+        heart.style.fontSize =
+            (15 + Math.random() * 30) + 'px';
+
+        heart.style.animationDuration =
+            (5 + Math.random() * 8) + 's';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 13000);
+
+    }
+
+    setInterval(createHeart, 500);
+
+
+    /* =========================
+       COUNTDOWN
+    ========================= */
+
+    const weddingDate =
+        new Date("March 27, 2027 08:00:00").getTime();
+
+
+    function updateCountdown() {
+
+        const now = new Date().getTime();
+
+        const distance =
+            weddingDate - now;
+
+
+        if(distance <= 0) {
+
+            document.getElementById("days").innerHTML = "❤️";
+            document.getElementById("hours").innerHTML = "❤️";
+            document.getElementById("minutes").innerHTML = "❤️";
+            document.getElementById("seconds").innerHTML = "❤️";
+
+            return;
+        }
+
+
+        const days =
+            Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        const hours =
+            Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                / (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (distance % (1000 * 60 * 60))
+                / (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (distance % (1000 * 60))
+                / 1000
+            );
+
+
+        document.getElementById("days").innerHTML = days;
+
+        document.getElementById("hours").innerHTML = hours;
+
+        document.getElementById("minutes").innerHTML = minutes;
+
+        document.getElementById("seconds").innerHTML = seconds;
+
+    }
+
+
+    setInterval(updateCountdown, 1000);
+
+    updateCountdown();
+
+
+    /* =========================
+       MUSIC
+    ========================= */
+
+    let musicPlaying = false;
+
+    function toggleMusic() {
+
+        const music =
+            document.getElementById("weddingMusic");
+
+        const button =
+            document.getElementById("musicButton");
+
+
+        if(!musicPlaying) {
+
+            music.play();
+
+            musicPlaying = true;
+
+            button.innerHTML = "⏸️";
+
+        }
+
+        else {
+
+            music.pause();
+
+            musicPlaying = false;
+
+            button.innerHTML = "🎵";
+
+        }
+
+    }
+
+</script>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+```
